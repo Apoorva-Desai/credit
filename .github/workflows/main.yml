@@ -1,0 +1,33 @@
+name: Build maven package
+
+on:
+
+  push:
+    branches: [ "master" ]
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Setup1 checkout main branch
+        uses: actions/checkout@v3
+
+      - name: Setup2 up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'       
+
+      - name: Setup3 Github actions Build with Maven
+        run: mvn -B package --file pom.xml
+
+      - name: Setup4 List the current directory
+        run: ls -a 
+
+      - name: Setup5 what is in the target folder
+        run: |
+          cd target
+          ls -a     
