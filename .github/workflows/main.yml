@@ -46,6 +46,7 @@ jobs:
         - uses: actions/upload-artifact@v1
           with:
             name: my-artifact
+            path: production
   Release-project:        
       runs-on: ubuntu-latest
       needs: [Build_package-job]
@@ -57,5 +58,5 @@ jobs:
       - name: Archive content
         uses: thedoctor0/zip-release@master
         with:
-          filename: site.zip    
+          filename: site.zip   
 
